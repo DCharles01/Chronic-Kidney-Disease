@@ -1,5 +1,5 @@
 # Chronic-Kidney-Disease
-Predict whether or not a patient has CKD using ML.
+Predict whether a patient has CKD.
 
 # References
 - https://archive.ics.uci.edu/ml/datasets/chronic_kidney_disease#

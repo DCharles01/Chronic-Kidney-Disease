@@ -1,5 +1,5 @@
 # Chronic-Kidney-Disease
-Predict whether a patient has CKD.
+Create streamlit ML application to predict whether a patient has CKD.
 
 # References
 - https://archive.ics.uci.edu/ml/datasets/chronic_kidney_disease#

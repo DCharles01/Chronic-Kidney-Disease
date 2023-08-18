@@ -1,0 +1,19 @@
+version: '3'
+services:
+  streamlit-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile_Streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app:/app
+
+  flask-ml-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile_Flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app

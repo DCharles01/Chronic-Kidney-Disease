@@ -152,7 +152,7 @@ def app():
         # public_ip = ip_data['ip']
 
         # Make a POST request to the Flask API
-        response = requests.post(f'http://localhost:80/predict', data=data_json, headers=headers)
+        response = requests.post(f'http://flask-ml-api:80/predict', data=data_json, headers=headers)
         prediction = response.text
         #prediction = predict(model, blood_pressure, red_blood_cell_count, white_blood_cell_count, packed_cell_volume, serum_creatinine, sodium, potassium, hemoglobin, age, red_blood_cells, coronary_artery_disease, appetite, hypertension, diabetes, anemia, pedal_edema)
         logging.info(f'Prediction Successful: {prediction}')

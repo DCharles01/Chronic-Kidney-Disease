@@ -6,6 +6,11 @@ services:
       dockerfile: Dockerfile_Streamlit
     ports:
       - "8501:8501"
+    
+    # add both containers to same network
+    # docker network create my_network
+    networks:
+      - flask_streamlit_conn
     # volumes:
     #   - ./app:/app
 
@@ -14,6 +19,11 @@ services:
       context: ./
       dockerfile: Dockerfile_Flask
     ports:
-      - "5000:5000"
+      - "80:80"
+    networks:
+      - flask_streamlit_conn
     # volumes:
     #   - ./app:/app
+
+networks:
+  flask_streamlit_conn:

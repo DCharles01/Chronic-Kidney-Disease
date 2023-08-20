@@ -13,6 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
+      - name: Set up Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+
       - name: Set up and deploy Docker Compose
         run: docker-compose up --build
 

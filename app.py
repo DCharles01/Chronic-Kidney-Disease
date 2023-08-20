@@ -145,8 +145,14 @@ def app():
 
         # headers
         headers = {'Content-Type': 'application/json'}
+
+        # Fetch the public IP address of the EC2 instance
+        ip_response = requests.get('http://api.ipify.org?format=json')
+        ip_data = ip_response.json()
+        public_ip = ip_data['ip']
+
         # Make a POST request to the Flask API
-        response = requests.post('localhost:5000/predict', data=data_json, headers=headers)
+        response = requests.post(f'{public_ip}:5000/predict', data=data_json, headers=headers)
         prediction = response.text
         #prediction = predict(model, blood_pressure, red_blood_cell_count, white_blood_cell_count, packed_cell_volume, serum_creatinine, sodium, potassium, hemoglobin, age, red_blood_cells, coronary_artery_disease, appetite, hypertension, diabetes, anemia, pedal_edema)
         logging.info(f'Prediction Successful: {prediction}')

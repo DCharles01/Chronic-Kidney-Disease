@@ -1,3 +1,5 @@
 .DS_Store
 .ipynb_checkpoints/
-ckd-ml-application.pem
+*.pem
+*.log
+ml_streamlit_application_data.db

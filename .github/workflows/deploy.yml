@@ -1,0 +1,20 @@
+name: Docker Compose Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Change to the branch you want to trigger the workflow
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up and deploy Docker Compose
+        run: docker-compose up --build
+
+      # - name: Setup AWS 
+      #   run: docker-compose -f docker-compose.yml up -d

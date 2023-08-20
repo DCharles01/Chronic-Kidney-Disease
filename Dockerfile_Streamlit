@@ -1,11 +1,16 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim
+FROM python:3.10-slim
 
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-ADD . /app
+# ADD . /app
+
+COPY . /app
+
+# upgrade pip to avoid hash issues
+RUN pip install --upgrade pip
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r streamlit_requirements.txt

@@ -2,7 +2,7 @@ version: '3'
 services:
   streamlit-app:
     build:
-      context: ./
+      context: ./ # current directory
       dockerfile: Dockerfile_Streamlit
     ports:
       - "8501:8501"

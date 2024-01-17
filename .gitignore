@@ -3,3 +3,4 @@
 *.pem
 *.log
 ml_streamlit_application_data.db
+.idea

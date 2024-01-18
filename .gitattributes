@@ -1,0 +1,20 @@
+# Python
+*.py       text
+
+# SQL
+*.sql      text
+
+# Bash scripts
+*.sh       text
+
+# HTML
+*.html     text
+
+# JavaScript
+*.js       text
+
+# CSS
+*.css      text
+
+# Jupyter Notebooks
+*.ipynb    text

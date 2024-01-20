@@ -4,6 +4,7 @@ from db.postgres_connector import create_session, database_url, dev_database_url
 from sqlalchemy.sql import text
 
 
+
 def test_prod_connection():
     # breakpoint()
     session = create_session(database_url)  # create connection

@@ -7,3 +7,4 @@ ml_streamlit_application_data.db
 .pytest_cache
 __pycache__
 .hypothesis
+venv

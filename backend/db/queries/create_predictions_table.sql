@@ -1,6 +1,6 @@
-drop table if exists ckd_patient_data;
+drop table if exists patient_data;
 
-CREATE TABLE ckd_patient_data (
+CREATE TABLE patient_data (
     id SERIAL PRIMARY KEY,
     session_id VARCHAR(255) NOT NULL,
     session_ts TIMESTAMP NOT NULL,

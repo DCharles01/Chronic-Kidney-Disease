@@ -1,0 +1,8 @@
+tests-db:
+    pytest -vv tests/db/
+
+tests-ml:
+    pytest -vv tests/ml/
+
+tests-models:
+    pytest -vv tests/models/

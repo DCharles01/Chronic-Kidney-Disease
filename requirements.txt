@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 75c5e10 (update requirements.txt to fix flask and sqlalchemy dependency issues)
 Flask==2.2
 SQLAlchemy<2.0
 Flask_SQLAlchemy==3.0.2

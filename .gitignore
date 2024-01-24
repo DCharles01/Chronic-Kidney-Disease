@@ -4,3 +4,6 @@
 *.log
 ml_streamlit_application_data.db
 .idea
+.pytest_cache
+__pycache__
+.hypothesis

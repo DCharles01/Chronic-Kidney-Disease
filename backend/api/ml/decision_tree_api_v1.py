@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load the machine learning model
 
-model = pickle.load(open('ml/model_decisiontree_0801.pkl', 'rb'))
+model = pickle.load(open('model_decisiontree_0801.pkl', 'rb'))
 
 @app.route('/predict', methods=['POST'])
 def predict():

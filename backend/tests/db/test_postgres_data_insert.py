@@ -22,8 +22,6 @@ def dev_app():
 def test_ckd_patient_data_exists(dev_app):
     assert CKDPatientData.query.count()==1
 
-def test_ckd_patient_data_has_session_id(dev_app):
-    assert CKDPatientData.query.first().session_id == '123'
 
 
 

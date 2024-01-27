@@ -1,6 +1,8 @@
 import pytest
-from ml.api.create_app import create_app, create_table
+from api.create_app import create_app
 from db.models.models import db, CKDPatientData
+from db import create_table
+
 
 
 @pytest.fixture()

@@ -31,3 +31,7 @@ class CKDPatientData(db.Model):
     prediction = db.Column(db.String(255))
     prediction_duration = db.Column(db.Integer)
     is_correct = db.Column(db.String(255))
+
+    def to_dict(self):
+        '''Converts instance to dictionary'''
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}

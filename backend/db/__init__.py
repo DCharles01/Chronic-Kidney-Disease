@@ -1,0 +1,1 @@
+from db.create_sqlalchemy_model_in_database import create_table

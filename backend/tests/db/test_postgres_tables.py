@@ -1,5 +1,5 @@
 import pytest
-from ml.api.create_app import create_app, create_table
+from api.create_app import create_app, create_table
 from db.models.models import db
 
 

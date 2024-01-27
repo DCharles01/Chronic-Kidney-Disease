@@ -1,3 +1,7 @@
+
+tests-all:
+	pytest -vv tests/
+
 tests-db:
 	pytest -vv tests/db/
 

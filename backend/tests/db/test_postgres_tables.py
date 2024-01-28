@@ -1,6 +1,7 @@
 import pytest
-from api.create_app import create_app, create_table
+from api.create_app import create_app
 from db.models.models import db
+from db import create_table
 
 
 @pytest.fixture()

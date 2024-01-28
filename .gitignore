@@ -8,5 +8,4 @@ ml_streamlit_application_data.db
 __pycache__
 .hypothesis
 venv
-
-git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch venv/' --prune-empty HEAD
+config.ini

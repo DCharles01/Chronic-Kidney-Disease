@@ -1,4 +1,6 @@
 
+start-api:
+	python run.py
 tests-all:
 	pytest -vv tests/
 

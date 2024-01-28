@@ -14,7 +14,7 @@ import json
 
 log_format = '%(asctime)s - %(levelname)s - %(message)s'
 logging.basicConfig(format=log_format, datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[
-    logging.FileHandler(f'logs_{datetime.datetime.now().strftime("%Y%m%d")}.log'),
+    logging.FileHandler(f'logs/logs_{datetime.datetime.now().strftime("%Y%m%d")}.log'),
     logging.StreamHandler()], encoding='utf-8', level=logging.INFO)
     
 

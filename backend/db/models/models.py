@@ -6,12 +6,12 @@ class CKDPatientData(db.Model):
     __tablename__ = 'patient_data'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    session_id = db.Column(db.String(255))
-    session_ts = db.Column(db.String(255))
-    session_dt = db.Column(db.String(255))
-    session_duration = db.Column(db.Integer)
-    prediction_ts = db.Column(db.String(255))
-    prediction_dt = db.Column(db.String(10))  # Assuming 'yyyy-mm-dd' format
+    # session_id = db.Column(db.String(255))
+    # session_ts = db.Column(db.String(255))
+    # session_dt = db.Column(db.String(255))
+    # session_duration = db.Column(db.Integer)
+    # prediction_ts = db.Column(db.String(255))
+    # prediction_dt = db.Column(db.String(10))  # Assuming 'yyyy-mm-dd' format
     age = db.Column(db.Integer)
     blood_pressure = db.Column(db.Integer)
     red_blood_cell_count = db.Column(db.Integer)

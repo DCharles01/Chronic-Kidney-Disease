@@ -36,13 +36,7 @@ def create_app(environ: str):
     def predict():
         data = request.get_json()
 
-        # user_inputs = [data['age'], data['blood_pressure'], data['red_blood_cell_count'],
-        #                data['white_blood_cell_count'],
-        #                data['packed_cell_volume'], data['serum_creatinine'], data['sodium'], data['potassium'],
-        #                data['hemoglobin'],
-        #                data['red_blood_cells'], data['coronary_artery_disease'], data['appetite'],
-        #                data['hypertension'], data['diabetes'],
-        #                data['anemia'], data['pedal_edema']]
+
 
         user_inputs = [data['age'], data['blood_pressure'], data['red_blood_cell_count'], data['white_blood_cell_count'],
                 data['packed_cell_volume'], data['serum_creatinine'], data['sodium'], data['potassium'], data['hemoglobin'],
@@ -56,22 +50,4 @@ def create_app(environ: str):
     return app
 
 
-
-
-
-def create_table(app, environ: str = 'dev'):
-    assert environ in ['prod', 'test', 'dev'], f"{environ} not in {['prod', 'test', 'dev']}"
-    # breakpoint()
-    if environ == 'prod':
-
-        db.create_engine(database_url)
-    elif environ == 'dev':
-        db.create_engine(dev_database_url)
-
-    else:
-        db.create_engine(test_database_url)
-
-    # breakpoint()
-    db.init_app(app)
-    db.metadata.create_all(db.engine)
 

@@ -8,3 +8,4 @@ ml_streamlit_application_data.db
 __pycache__
 .hypothesis
 venv
+config.ini

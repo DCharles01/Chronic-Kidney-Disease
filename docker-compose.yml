@@ -3,7 +3,7 @@ services:
   streamlit-app:
     build:
       context: ./ # current directory
-      dockerfile: Dockerfile_Streamlit
+      dockerfile: frontend/streamlit/Dockerfile
     ports:
       - "8501:8501"
     
@@ -17,7 +17,7 @@ services:
   flask-ml-api:
     build:
       context: ./
-      dockerfile: Dockerfile_Flask
+      dockerfile: backend/api/ml/Dockerfile
     ports:
       - "80:80"
     networks:

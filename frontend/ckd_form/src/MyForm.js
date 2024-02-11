@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './MyForm.css';
 
 const MyForm = () => {
   const [formData, setFormData] = useState({
@@ -46,24 +47,25 @@ const MyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-          <label>
-            Age:
-            <input type="number" name="age" value={formData.age} onChange={handleChange} />
-          </label>
-      </div>
-      <div>
-          <label>
-            Blood Pressure (mm/HG):
-            <input
-              type="number"
-              name="bloodPressure"
-              value={formData.bloodPressure}
-              onChange={handleChange}
-            />
-          </label>
-      </div>
+  <form onSubmit={handleSubmit}>
+    <div>
+      <label>
+        Age:
+        <input type="number" name="age" value={formData.age} onChange={handleChange} />
+      </label>
+    </div>
+    <div>
+      <label>
+        Blood Pressure (mm/HG):
+        <input
+          type="number"
+          name="bloodPressure"
+          value={formData.bloodPressure}
+          onChange={handleChange}
+        />
+      </label>
+    </div>
+    <div>
       <label>
         Red Blood Cell Count:
         <input
@@ -73,6 +75,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         White Blood Cell Count:
         <input
@@ -82,6 +86,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Packed Cell Volume:
         <input
@@ -91,6 +97,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Serum Creatinine:
         <input
@@ -100,6 +108,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Sodium:
         <input
@@ -109,6 +119,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Potassium:
         <input
@@ -118,6 +130,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Hemoglobin:
         <input
@@ -127,6 +141,8 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
+    <div>
       <label>
         Red Blood Cells:
         <select name="redBloodCells" value={formData.redBloodCells} onChange={handleChange}>
@@ -134,6 +150,8 @@ const MyForm = () => {
           <option value="abnormal">Abnormal</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Coronary Artery Disease:
         <select
@@ -145,6 +163,8 @@ const MyForm = () => {
           <option value="no">No</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Appetite:
         <select name="appetite" value={formData.appetite} onChange={handleChange}>
@@ -152,6 +172,8 @@ const MyForm = () => {
           <option value="poor">Poor</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Hypertension:
         <select name="hypertension" value={formData.hypertension} onChange={handleChange}>
@@ -159,6 +181,8 @@ const MyForm = () => {
           <option value="no">No</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Diabetes:
         <select name="diabetes" value={formData.diabetes} onChange={handleChange}>
@@ -166,6 +190,8 @@ const MyForm = () => {
           <option value="no">No</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Anemia:
         <select name="anemia" value={formData.anemia} onChange={handleChange}>
@@ -173,6 +199,8 @@ const MyForm = () => {
           <option value="no">No</option>
         </select>
       </label>
+    </div>
+    <div>
       <label>
         Pedal Edema:
         <select name="pedalEdema" value={formData.pedalEdema} onChange={handleChange}>
@@ -180,9 +208,10 @@ const MyForm = () => {
           <option value="no">No</option>
         </select>
       </label>
-      <button type="submit">Submit</button>
-    </form>
-  );
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+);
 };
 
 export default MyForm;

@@ -21,32 +21,39 @@ const MyForm = () => {
     pedalEdema: 'yes',
   });
 
+  const [responseText, setResponseText] = useState('');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      // Make a POST request using fetch or a library like axios
-      const response = await fetch('http://localhost:80/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add any other headers as needed
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch('http://localhost:80/predict', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers as needed
+      },
+      body: JSON.stringify(formData),
+    });
 
-      // Handle the response, e.g., show success message or redirect
-      console.log('Response:', response);
-    } catch (error) {
-      console.error('Error:', error);
+    if (response.ok) {
+      const textResponse = await response.text();
+      setResponseText(textResponse); // Set response text in state
+    } else {
+      throw new Error('Request failed');
     }
-  };
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
 
   return (
+  <div>
   <form onSubmit={handleSubmit}>
     <div>
       <label>
@@ -211,6 +218,13 @@ const MyForm = () => {
     </div>
     <button type="submit">Submit</button>
   </form>
+  {responseText && (
+        <div>
+          <h2>Response:</h2>
+          <p>{responseText}</p>
+        </div>
+      )}
+  </div>
 );
 };
 

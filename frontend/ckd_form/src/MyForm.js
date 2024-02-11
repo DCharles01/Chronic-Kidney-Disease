@@ -47,19 +47,23 @@ const MyForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Age:
-        <input type="number" name="age" value={formData.age} onChange={handleChange} />
-      </label>
-      <label>
-        Blood Pressure (mm/HG):
-        <input
-          type="number"
-          name="bloodPressure"
-          value={formData.bloodPressure}
-          onChange={handleChange}
-        />
-      </label>
+      <div>
+          <label>
+            Age:
+            <input type="number" name="age" value={formData.age} onChange={handleChange} />
+          </label>
+      </div>
+      <div>
+          <label>
+            Blood Pressure (mm/HG):
+            <input
+              type="number"
+              name="bloodPressure"
+              value={formData.bloodPressure}
+              onChange={handleChange}
+            />
+          </label>
+      </div>
       <label>
         Red Blood Cell Count:
         <input

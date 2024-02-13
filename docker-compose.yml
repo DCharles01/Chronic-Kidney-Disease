@@ -19,7 +19,7 @@ services:
       context: ./backend
       dockerfile: api/ml/Dockerfile
     ports:
-      - "80:80"
+      - "5000:5000"
     networks:
       - flask_streamlit_conn
     # volumes:

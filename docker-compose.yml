@@ -2,8 +2,8 @@ version: '3'
 services:
   streamlit-app:
     build:
-      context: ./ # current directory
-      dockerfile: frontend/streamlit/Dockerfile
+      context: ./frontend/streamlit # current directory
+      dockerfile: Dockerfile
     ports:
       - "8501:8501"
     
@@ -16,14 +16,23 @@ services:
 
   flask-ml-api:
     build:
-      context: ./
-      dockerfile: backend/api/ml/Dockerfile
+      context: ./backend
+      dockerfile: api/ml/Dockerfile
     ports:
       - "80:80"
     networks:
       - flask_streamlit_conn
     # volumes:
     #   - ./app:/app
+
+  react-app:
+    build:
+      context: ./frontend/ckd_form
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - flask_streamlit_conn
 
 networks:
   flask_streamlit_conn:

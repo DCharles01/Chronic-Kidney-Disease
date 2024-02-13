@@ -114,7 +114,7 @@ def app():
 
 
     # convert to json format for model api
-    cols = ['age','blood_pressure','red_blood_cell_count','white_blood_cell_count','packed_cell_volume','serum_creatinine','sodium','potassium','hemoglobin','red_blood_cells','coronary_artery_disease','appetite','hypertension','diabetes','anemia','pedal_edema']
+    cols = ['age','bloodPressure','redBloodCellCount','whiteBloodCellCount','packedCellVolume','serumCreatinine','sodium','potassium','hemoglobin','redBloodCells','coronaryArteryDisease','appetite','hypertension','diabetes','anemia','pedalEdema']
     vals = [age,blood_pressure,red_blood_cell_count,white_blood_cell_count,packed_cell_volume,serum_creatinine,sodium,potassium,hemoglobin,red_blood_cells,coronary_artery_disease,appetite,hypertension,diabetes,anemia,pedal_edema]
     data_vals = dict(zip(cols,vals))
     

@@ -13,7 +13,7 @@ COPY . /app
 RUN pip install --upgrade pip
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r flask_requirements.txt
+RUN pip install --no-cache-dir -r api/ml/requirements.txt
 
 # Make port 80 available to the world outside this container
 EXPOSE 80

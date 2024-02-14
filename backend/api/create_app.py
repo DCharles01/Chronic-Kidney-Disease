@@ -46,7 +46,9 @@ def create_app(environ: str):
         diabetes_prediction_mapping = {'yes': 1, 'no': 0}
         anemia_prediction_mapping = {'yes': 1, 'no': 0}
         pedal_edema_prediction_mapping = {'yes': 1, 'no': 0}
-
+        
+        print(data['coronaryArteryDisease'])
+        print(cad_prediction_mapping)
         # # feature engineer columns
         data['coronaryArteryDisease'] = cad_prediction_mapping[
             data['coronaryArteryDisease']]

@@ -93,24 +93,7 @@ def app():
     anemia = st.selectbox('Anemic?', ['yes', 'no'])
     pedal_edema = st.selectbox('Pedal Edema?', ['yes', 'no'])
 
-    # map binary options to 1 and 0
-    rbc_prediction_mapping = {'normal':1, 'abnormal':0}
-    cad_prediction_mapping = {'yes': 1, 'no':0}
-    appetite_prediction_mapping = {'good':1, 'poor':0}
-    hypertension_prediction_mapping = {'yes':1, 'no':0}
-    diabetes_prediction_mapping = {'yes':1, 'no':0}
-    anemia_prediction_mapping = {'yes':1, 'no':0}
-    pedal_edema_prediction_mapping = {'yes':1, 'no':0}
-    
 
-    # feature engineer columns
-    red_blood_cells = rbc_prediction_mapping[red_blood_cells]
-    coronary_artery_disease = cad_prediction_mapping[coronary_artery_disease]
-    appetite = appetite_prediction_mapping[appetite]
-    hypertension = hypertension_prediction_mapping[hypertension]
-    diabetes = diabetes_prediction_mapping[diabetes]
-    anemia = anemia_prediction_mapping[anemia]
-    pedal_edema = pedal_edema_prediction_mapping[pedal_edema]
 
 
     # convert to json format for model api
@@ -124,15 +107,7 @@ def app():
     logging.info(data_vals)
     # # Make a prediction based on the inputs
     if st.button('Predict'):
-        # define global variable to make accessible outside of if statement
-        # global prediction_start_ts_str
-        # global prediction_start_ts
-        # global prediction_end
-        # global prediction
-        # global prediction_dt
-        # global prediction_duration
-        # global prediction_start_ts_str
-        # global prediction_start_ts
+        
 
         prediction_start_ts_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") # prediction timestamp
         prediction_start_ts = datetime.datetime.now() # prediction timestamp
@@ -146,26 +121,18 @@ def app():
         # headers
         headers = {'Content-Type': 'application/json'}
 
-        # Fetch the public IP address of the EC2 instance
-        # ip_response = requests.get('http://api.ipify.org?format=json')
-        # ip_data = ip_response.json()
-        # public_ip = ip_data['ip']
 
         # Make a POST request to the Flask API
         response = requests.post(f'http://flask-ml-api:5000/predict', data=data_json, headers=headers)
         prediction = response.text
-        #prediction = predict(model, blood_pressure, red_blood_cell_count, white_blood_cell_count, packed_cell_volume, serum_creatinine, sodium, potassium, hemoglobin, age, red_blood_cells, coronary_artery_disease, appetite, hypertension, diabetes, anemia, pedal_edema)
+        
         logging.info(f'Prediction Successful: {prediction}')
-        # except:
-        #     logging.critical('Prediction Not Made.')
-        #     st.experimental_rerun() # refresh page if prediction is not returned
+    
         
         prediction_end = datetime.datetime.now() # prediction timestamp
-        # prediction duration to track if prediction is taking a long time
+        
         prediction_duration = (prediction_end - prediction_start_ts).total_seconds()
 
-        # Show the prediction to the user
-        # prediction = prediction_mapping[prediction]
 
         st.write(prediction)
         prediction_dt = datetime.date.today().strftime("%Y-%m-%d") # prediction date
@@ -178,6 +145,7 @@ def app():
     logging.info(f'True Prediction Duration:{prediction_duration}')
     logging.info(f'True Prediction:{prediction}')
 
+    # TODO: clean up 
     # add submit button for user to officially send predictions to database
     if st.button('Submit'):
         

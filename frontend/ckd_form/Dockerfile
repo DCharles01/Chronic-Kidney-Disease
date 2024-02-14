@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Command to run the React app
-CMD ["HOST=0.0.0.0", "npm", "start"]
+CMD ["npm", "start", "--", "--host=0.0.0.0"]

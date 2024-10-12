@@ -123,7 +123,7 @@ def app():
 
 
         # Make a POST request to the Flask API
-        response = requests.post(f'http://flask-ml-api:5000/predict', data=data_json, headers=headers)
+        response = requests.post(f'http://0.0.0.0:5000/predict', data=data_json, headers=headers)
         prediction = response.text
         
         logging.info(f'Prediction Successful: {prediction}')

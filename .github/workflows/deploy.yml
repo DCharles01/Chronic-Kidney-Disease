@@ -1,44 +1,25 @@
-#name: Docker Compose Build and Deploy
-#
-#on:
-#  push:
-#    branches:
-#      - main  # Change to the branch you want to trigger the workflow
-#
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Set up Docker
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get -y install docker.io
-#          sudo systemctl start docker
-#          sudo systemctl enable docker
-#
-#      - name: Set up Docker Compose
-#        run: |
-#          sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#          sudo chmod +x /usr/local/bin/docker-compose
-#
-#      - name: Set up and deploy Docker Compose
-#        run: docker-compose up --build
-#
-#      # - name: Setup AWS
-#      #   run: docker-compose -f docker-compose.yml up -d
-
-
-name: Run pytest
+name: Build CKD App
 
 on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ckd  # Primary DB
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres" 
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - name: Checkout repository
@@ -47,13 +28,41 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9  # Specify the Python version you need
+        python-version: 3.9  
+
+    - name: Build Docker container for Model API
+      run: |
+        cd backend
+        docker build -t model-api:1.0.0 .
+
+    - name: Build Docker container for Streamlit App
+      run: |
+        cd frontend/streamlit
+        docker build -t streamlit-app:1.0.0 .
 
     - name: Install dependencies
       run: |
+        cd backend
         python -m pip install --upgrade pip
-        pip install -r path/to/requirements.txt  # Replace with your requirements file path
+        pip install -r requirements.txt 
+
+    - name: Create Additional Databases
+      env:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+      run: |
+        # Wait for PostgreSQL to be ready
+        until pg_isready -h localhost -p 5432 -U "$POSTGRES_USER"; do
+          echo "Waiting for PostgreSQL to be ready..."
+          sleep 1
+        done
+        # Create additional databases
+        psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE dev_ckd;"
+        psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE test_ckd;"
 
     - name: Run pytest
-      run: pytest path/to/tests  # Replace with your test directory path
-
+      env:
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_ckd
+      run: |
+        cd backend
+        pytest tests

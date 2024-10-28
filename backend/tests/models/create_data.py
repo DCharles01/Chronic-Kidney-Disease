@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture()
 def insert_data():
-    patient_data = CKDPatientData(session_id='123', age=25, hypertension='yes', diabetes='yes', pedal_edema='yes', prediction='CKD')
+    patient_data = CKDPatientData(age=25, hypertension='yes', diabetes='yes', pedal_edema='yes', prediction='CKD')
 
     yield patient_data
 

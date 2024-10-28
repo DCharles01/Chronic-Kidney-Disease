@@ -47,15 +47,14 @@ def create_app(environ: str):
         anemia_prediction_mapping = {'yes': 1, 'no': 0}
         pedal_edema_prediction_mapping = {'yes': 1, 'no': 0}
         
-        print(data['coronaryArteryDisease'])
-        print(cad_prediction_mapping)
+        # print(data['coronaryArteryDisease'])
+        # print(cad_prediction_mapping)
         # # feature engineer columns
         data['coronaryArteryDisease'] = cad_prediction_mapping[
             data['coronaryArteryDisease']]
         data['redBloodCells'] = rbc_prediction_mapping[data['redBloodCells']]
         data['appetite'] = appetite_prediction_mapping[data['appetite']]
-        data['hypertension'] = hypertension_prediction_mapping[
-            data['hypertension']]
+        data['hypertension'] = hypertension_prediction_mapping[data['hypertension']]
         data['diabetes'] = diabetes_prediction_mapping[data['diabetes']]
         data['anemia'] = anemia_prediction_mapping[data['anemia']]
         data['pedalEdema'] = pedal_edema_prediction_mapping[data['pedalEdema']]

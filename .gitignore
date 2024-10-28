@@ -7,7 +7,7 @@ ml_streamlit_application_data.db
 .pytest_cache
 __pycache__
 .hypothesis
-venv
+venv/
 config.ini
 *.tf
 .terraform
@@ -15,3 +15,4 @@ config.ini
 terraform.tfstate
 terraform.tfstate.backup
 user_data.sh
+mlruns/

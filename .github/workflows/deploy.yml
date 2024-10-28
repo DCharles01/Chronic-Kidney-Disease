@@ -11,7 +11,7 @@ jobs:
         image: postgres:13
         env:
           POSTGRES_USER: postgres
-          PGPASSWORD: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: ckd  # Primary DB
         ports:
           - 5432:5432
@@ -49,7 +49,7 @@ jobs:
     - name: Create Additional Databases
       env:
         POSTGRES_USER: postgres
-        PGPASSWORD: postgres
+        PGPASSWORD: "$POSTGRES_PASSWORD"
       run: |
         # Wait for PostgreSQL to be ready
         until pg_isready -h localhost -p 5432 -U "$POSTGRES_USER"; do

@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/david/Documents/Documents%20-%20David%E2%80%99s%20Mac%20Studio/Personal_Projects/Chronic-Kidney-Disease/.github/workflows/deploy.yml"
+    }
+}

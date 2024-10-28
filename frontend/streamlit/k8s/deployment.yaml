@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-deployment
+  labels:
+    app: streamlit-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: streamlit-app
+  template:
+    metadata:
+      labels:
+        app: streamlit-app
+    spec:
+      containers:
+      - name: streamlit-container
+        image: 913871725780.dkr.ecr.us-east-2.amazonaws.com/ckd-streamlit:3.0.0
+        ports:
+        - containerPort: 8501
+        # env:
+        # - name: FLASK_URL
+        #   value: "http://flask-service.default.svc.cluster.local" # Flask internal service URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: streamlit-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8501

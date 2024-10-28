@@ -60,3 +60,8 @@ urllib3==2.1.0
 validators==0.22.0
 Werkzeug==2.3.8
 zipp==3.17.0
+mlflow
+# kfp<2.0.0
+evidently
+prefect
+# flytekit

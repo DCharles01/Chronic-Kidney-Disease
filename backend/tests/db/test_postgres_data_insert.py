@@ -11,7 +11,7 @@ def dev_app():
     with app.app_context():
         # build up
         create_table(app=app, environ='dev')
-        patient_data = CKDPatientData(session_id='123', age=56, diabetes='yes', anemia='yes', prediction='yes', is_correct='yes')
+        patient_data = CKDPatientData(age=56, diabetes='yes', anemia='yes', prediction='yes', is_correct='yes')
         db.session.add(patient_data)
         db.session.commit()
         yield app

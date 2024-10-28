@@ -11,7 +11,7 @@ jobs:
         image: postgres:13
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          PGPASSWORD: postgres
           POSTGRES_DB: ckd  # Primary DB
         ports:
           - 5432:5432
@@ -40,16 +40,16 @@ jobs:
         cd frontend/streamlit
         docker build -t streamlit-app:1.0.0 .
 
-    - name: Install dependencies
-      run: |
-        cd backend
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt 
+    # - name: Install dependencies
+    #   run: |
+    #     cd backend
+    #     python -m pip install --upgrade pip
+    #     pip install -r requirements.txt 
 
     - name: Create Additional Databases
       env:
         POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
+        PGPASSWORD: postgres
       run: |
         # Wait for PostgreSQL to be ready
         until pg_isready -h localhost -p 5432 -U "$POSTGRES_USER"; do

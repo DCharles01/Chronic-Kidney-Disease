@@ -56,9 +56,9 @@ jobs:
           echo "Waiting for PostgreSQL to be ready..."
           sleep 1
         done
-        # Create additional databases
-        psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE dev_ckd;"
-        psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE test_ckd;"
+
+        PGPASSWORD="$POSTGRES_PASSWORD" psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE dev_ckd;"
+        PGPASSWORD="$POSTGRES_PASSWORD" psql -h localhost -U "$POSTGRES_USER" -c "CREATE DATABASE test_ckd;"
 
     - name: Run pytest
       env:
